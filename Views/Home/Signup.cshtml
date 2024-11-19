@@ -1,0 +1,176 @@
+﻿@model surya_banking_application_Altura_sphere.Models.UserReg
+
+@{
+    ViewBag.Title = "Signup";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('https://www.shutterstock.com/image-vector/global-internet-network-security-digital-260nw-604575887.jpg'); /* Add your image URL here */
+            background-size: cover;
+            background-position: center;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .signup-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #0056b3;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #0056b3;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+            input[type="submit"]:hover {
+                background-color: #004494;
+            }
+
+        .back-button {
+            background-color: #ff6f61; /* Coral */
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+            .back-button:hover {
+                background-color: #e65c50;
+            }
+
+        .message {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2 style="display: flex; align-items: center;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPlbbhrv4Vyrif30urzYpTvYBHX_eZuyALyw&sg" alt="Surya Banking Logo" style="height: 80px; margin-right: 10px;" />
+            Surya Banking Services
+        </h2>
+        <h2>User Registration</h2>
+        <div class="message">@ViewBag.Message</div>
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                <label asp-for="Username">Enter Username:</label>
+                @Html.TextBoxFor(model => model.Username, new { @class = "form-control", required = "required", id = "username" })
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "message" }) <!-- Displaying error message -->
+                <div id="username-message" class="message" style="display: none;"></div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Passwords">Enter Password:</label>
+                @Html.PasswordFor(model => model.Passwords, new { @class = "form-control", required = "required" })
+            </div>
+            <div class="form-group">
+                <label asp-for="Mobile">Enter Mobile Number:</label>
+                @Html.TextBoxFor(model => model.Mobile, new { @class = "form-control", type = "tel", required = "required" })
+            </div>
+            <div class="form-group">
+                <label asp-for="Email">Enter Email:</label>
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", type = "email", required = "required" })
+            </div>
+            <div class="form-group">
+                <label asp-for="DOB">Enter DOB:</label>
+                @Html.TextBoxFor(model => model.DOB, new { @class = "form-control", type = "date", required = "required" })
+            </div>
+            <div class="form-group">
+                <label asp-for="Address">Enter Your Address:</label>
+                @Html.TextBoxFor(model => model.Address, new { @class = "form-control", required = "required" })
+            </div>
+            <input type="submit" value="Register" name="B1" />
+        }
+        <button class="back-button" onclick="location.href='@Url.Action("Index", "Home/Homepage")'">Back to Main Page</button>
+    </div>
+    @*@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#username').on('keyup', function () {
+                var username = $(this).val();
+
+                if (username.length > 0) {
+                    $.ajax({
+                        url: '@Url.Action("CheckUsername", "YourControllerName")',
+                        type: 'GET',
+                        data: { username: username },
+                        success: function (data) {
+                            if (!data) {
+                                $('#username-message').text('This username is already taken.').css('color', 'red').fadeIn();
+                                $('#username').val(''); // Clear the username field
+                            } else {
+                                $('#username-message').text('This username is available.').css('color', 'green').fadeIn();
+                            }
+                        }
+                    });
+                } else {
+                    $('#username-message').fadeOut(); // Hide message if input is empty
+                }
+            });
+        });
+    </script>*@
+    @*}*@
+</body>
+</html>

@@ -1,0 +1,89 @@
+﻿@using surya_banking_application_Altura_sphere.Models
+@{
+    ViewBag.Title = "AllUser";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #343a40;
+        }
+
+        .table {
+            margin: 20px auto;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .action-links a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+            .action-links a:hover {
+                text-decoration: underline;
+            }
+
+        .btn {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">All User Details</h2>
+        <div class="text-center">
+            @Html.ActionLink("Back", "AllViews", null, new { @class = "btn btn-secondary" })
+        </div>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Mobile</th>
+                    <th>Email</th>
+                    <th>DOB</th>
+                    <th>Address</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (UserReg U in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(model => U.Username)</td>
+                        <td>@Html.DisplayFor(model => U.Passwords)</td>
+                        <td>@Html.DisplayFor(model => U.Mobile)</td>
+                        <td>@Html.DisplayFor(model => U.Email)</td>
+                        <td>@Html.DisplayFor(model => U.DOB)</td>
+                        <td>@Html.DisplayFor(model => U.Address)</td>
+                        <td class="action-links">
+                            @Html.ActionLink("View", "ViewUser", new { username = U.Username }) |
+                            @Html.ActionLink("Edit", "EditUser", new { username = U.Username }) |
+                            @Html.ActionLink("Delete", "DeleteUser", new { username = U.Username })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    @*<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>*@
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

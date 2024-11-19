@@ -1,0 +1,104 @@
+﻿@model surya_banking_application_Altura_sphere.Models.BondInvestments
+@{
+    ViewBag.Title = "ViewBond";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #eef2f3;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .container {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-link {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .table td {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">View Bond Investment Details</h2>
+        <div class="action-link">
+            <p>@Html.ActionLink("Back", "AllDetailsBond", null, new { @class = "btn btn-secondary" })</p>
+        </div>
+        <table class="table table-bordered">
+            <tr>
+                <th>Id</th>
+                <td>@Html.DisplayFor(model => model.Id)</td>
+            </tr>
+            <tr>
+                <th>First Name</th>
+                <td>@Html.DisplayFor(model => model.FirstName)</td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td>@Html.DisplayFor(model => model.LastName)</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>@Html.DisplayFor(model => model.Email)</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>@Html.DisplayFor(model => model.Phone)</td>
+            </tr>
+            <tr>
+                <th>Bond Name</th>
+                <td>@Html.DisplayFor(model => model.BondName)</td>
+            </tr>
+            <tr>
+                <th>Amount Invested</th>
+                <td>@Html.DisplayFor(model => model.AmountInvested)</td>
+            </tr>
+            <tr>
+                <th>Interest Rate</th>
+                <td>@Html.DisplayFor(model => model.InterestRate)</td>
+            </tr>
+            <tr>
+                <th>Maturity Years</th>
+                <td>@Html.DisplayFor(model => model.MaturityYears)</td>
+            </tr>
+            <tr>
+                <th>Created At</th>
+                <td>@Html.DisplayFor(model => model.CreatedAt)</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>@Html.DisplayFor(model => model.status)</td>
+            </tr>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+

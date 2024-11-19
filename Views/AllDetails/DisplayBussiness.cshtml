@@ -1,0 +1,112 @@
+﻿@using surya_banking_application_Altura_sphere.Models
+@{
+    ViewBag.Title = "Business Loan Details";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #343a40;
+        }
+
+        .container {
+            margin-left: 50px; /* Center the container */
+        }
+
+        .table {
+            margin-top: 20px;
+        }
+
+            .table th {
+                background-color: #007bff;
+                color: white;
+            }
+
+        /* Styling for the back button */
+        .btn-back {
+            background-color: #28a745; /* Green background */
+            color: white; /* White text */
+            padding: 10px 20px; /* Padding for size */
+            border-radius: 5px; /* Rounded corners */
+            text-decoration: none; /* No underline */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+            .btn-back:hover {
+                background-color: #218838; /* Darker green on hover */
+            }
+
+        .btn {
+            width: 100%; /* Make buttons take full width */
+            margin: 5px 0; /* Add margin for spacing */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">@ViewBag.Title</h2>
+        <div class="text-center mb-3">
+            <a href="@Url.Action("AllViews")" class="btn-back">Back</a> <!-- Updated Back Button -->
+        </div>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Loan ID</th>
+                    <th>Borrower Name</th>
+                    <th>Business Name</th>
+                    <th>Loan Amount</th>
+                    <th>Interest Rate</th>
+                    <th>Loan Term</th>
+                    <th>Monthly Payment</th>
+                    <th>Start Date</th>
+                    <th>Purpose</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (BusinessLoan B in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(model => B.LoanID)</td>
+                        <td>@Html.DisplayFor(model => B.BorrowerName)</td>
+                        <td>@Html.DisplayFor(model => B.BusinessName)</td>
+                        <td>@Html.DisplayFor(model => B.LoanAmount)</td>
+                        <td>@Html.DisplayFor(model => B.InterestRate)</td>
+                        <td>@Html.DisplayFor(model => B.LoanTerm)</td>
+                        <td>@Html.DisplayFor(model => B.MonthlyPayment)</td>
+                        <td>@Html.DisplayFor(model => B.StartDate)</td>
+                        <td>@Html.DisplayFor(model => B.Purpose)</td>
+                        <td>@Html.DisplayFor(model => B.Email)</td>
+                        <td>@Html.DisplayFor(model => B.Phone)</td>
+                        <td>@Html.DisplayFor(model => B.Status)</td>
+                        <td>
+                            <div class="btn-group-vertical w-100">
+                                @Html.ActionLink("View", "ViewBussiness", new { @Id = B.LoanID }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("Edit", "EditBussiness", new { @Id = B.LoanID }, new { @class = "btn btn-warning" })
+                                @Html.ActionLink("Delete", "DeleteBussiness", new { @Id = B.LoanID }, new { @class = "btn btn-danger" })
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

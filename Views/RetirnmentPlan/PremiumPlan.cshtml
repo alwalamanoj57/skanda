@@ -1,0 +1,254 @@
+﻿@model surya_banking_application_Altura_sphere.Models.PremiumPlans
+@{
+    ViewBag.Title = "Premium Retirement Plan Application Form";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <style>
+        body {
+            background: url('https://img.freepik.com/free-vector/gradient-abstract-with-diagonal-lines-background_23-2150628385.jpg') no-repeat center center fixed; /* Add your image URL */
+            background-size: cover;
+            font-family: 'Verdana', sans-serif;
+        }
+
+        .container {
+            width: 90%; /* Adjust the width to make the form smaller */
+            max-width: 600px; /* Set a maximum width */
+            margin: auto;
+            margin-top: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            background-color: #ffffff;
+            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 30px;
+        }
+            .container:hover {
+                transform: scale(1.02);
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            }
+
+        h2 {
+            color: #00796b;
+            text-align: center;
+            animation: slideIn 0.5s ease-in-out;
+            margin-bottom: 20px;
+        }
+
+        keyframes slideIn {
+            from
+
+        {
+            transform: translateY(-20px);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        }
+
+        .details {
+            background-color: #e0f2f1;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-left: 5px solid #00796b;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .btn-primary {
+            background-color: #00796b;
+            border-color: #00796b;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+            .btn-primary:hover {
+                background-color: #004d40;
+                border-color: #004d40;
+                transform: scale(1.05);
+            }
+
+        .text-danger {
+            font-size: 0.9rem;
+        }
+
+        .alert {
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .footer-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            .footer-link a {
+                color: #00796b;
+                text-decoration: none;
+            }
+
+                .footer-link a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="display: flex; align-items: center; justify-content: center;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPlbbhrv4Vyrif30urzYpTvYBHX_eZuyALyw&sg" alt="Surya Banking Logo" style="height: 80px; margin-right: 10px;" />
+            Surya Banking Services
+        </h2>
+        <h2>@ViewBag.Title</h2>
+        <div class="details">
+            <h4>Basic Retirement Plan</h4>
+            <p>This plan offers basic coverage for your retirement needs. Details include:</p>
+            <ul>
+                <li>Monthly Contributions: $300</li>
+                <li>Expected Return: 10% annually</li>
+                <li>Investment Duration: 20 years</li>
+            </ul>
+        </div>
+        @using (Html.BeginForm())
+        {
+            <div style="padding: 20px; border: 1px solid #007bff; border-radius: 10px; background-color: #f9f9f9; margin-top: 20px;">
+                <h4>Your Premium Retirnment Plan Details:</h4>
+                <p><strong>ID:</strong> <span style="color: #007bff;">@ViewBag.me</span></p>
+            </div>
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                @Html.LabelFor(model => model.FirstName, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", @placeholder = "Enter First Name" })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.LastName, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", @placeholder = "Enter Last Name" })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Enter Email Address" })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control", @placeholder = "Enter Phone Number" })
+                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Age, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Age, new { @class = "form-control", @placeholder = "Enter Age" })
+                @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Job, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Job, new { @class = "form-control", @placeholder = "Enter Job Title" })
+                @Html.ValidationMessageFor(model => model.Job, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.MonthlyPayment, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.MonthlyPayment, new { @class = "form-control", @placeholder = "Enter Monthly Payment" })
+                @Html.ValidationMessageFor(model => model.MonthlyPayment, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Working_Year, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Working_Year, new { @class = "form-control", @placeholder = "Enter Years of Experience" })
+                @Html.ValidationMessageFor(model => model.Working_Year, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.CreatedAt, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.CreatedAt, new { @class = "form-control", @placeholder = "Select Date", type = "date" })
+                @Html.ValidationMessageFor(model => model.CreatedAt, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.HiddenFor(model => model.Status, new { Value = "Application Submitted" })
+            </div>
+
+            <div class="alert" style="margin-top: 20px;">
+                @ViewBag.Message
+            </div>
+
+            <div class="form-group text-center">
+                <input type="submit" value="Apply" class="btn btn-primary" />
+            </div>
+        }
+        <div class="container">
+            <h2 class="text-center">Check Your Premium Plan Investment Status</h2>
+
+            @if (TempData["Message"] != null)
+            {
+                <div class="alert alert-danger text-center">
+                    @TempData["Message"]
+                </div>
+            }
+
+            @using (Html.BeginForm("CheckApplicationId9", "RetirnmentPlan", FormMethod.Post))
+            {
+                <div class="form-group">
+                    <label for="Id">Enter your ID:</label>
+                    <input type="number" class="form-control" id="Id" name="Id" required />
+                </div>
+                <button type="submit" class="btn btn-attractive">Check Status</button>
+            }
+        </div>
+
+        <style>
+            .btn-attractive {
+                background-color: #28a745; /* Green background */
+                color: white; /* White text */
+                padding: 10px 20px; /* Padding for size */
+                border-radius: 5px; /* Rounded corners */
+                border: none; /* Remove default border */
+                font-size: 16px; /* Font size */
+                font-weight: bold; /* Bold text */
+                transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+                cursor: pointer; /* Change cursor on hover */
+            }
+
+                .btn-attractive:hover {
+                    background-color: #218838; /* Darker green on hover */
+                    transform: scale(1.05); /* Slightly enlarge on hover */
+                }
+
+                .btn-attractive:focus {
+                    outline: none; /* Remove focus outline */
+                    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5); /* Add a glow effect */
+                }
+        </style>
+        <div class="footer-link">
+            @Html.ActionLink("Back", "RetirnmentPlan", "Home", null, new { @class = "btn btn-secondary" })
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("form").validate(); // Enable validation
+        });
+    </script>
+</body>
+</html>
+
+
+

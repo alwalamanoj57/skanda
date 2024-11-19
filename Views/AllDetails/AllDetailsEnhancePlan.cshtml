@@ -1,0 +1,129 @@
+﻿@using surya_banking_application_Altura_sphere.Models
+@{
+    ViewBag.Title = "AllDetailsEnhancePlan";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #eef2f3;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .container {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 95%;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-link {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .btn-custom {
+            margin: 5px;
+        }
+
+        .table th {
+            background-color: #5bc0de; /* Light blue */
+            color: white;
+        }
+
+        .table td {
+            vertical-align: middle;
+        }
+
+        .btn-info {
+            background-color: #5cb85c; /* Green */
+            border-color: #4cae4c;
+        }
+
+        .btn-warning {
+            background-color: #f0ad4e; /* Yellow */
+            border-color: #eea236;
+        }
+
+        .btn-danger {
+            background-color: #d9534f; /* Red */
+            border-color: #c9302c;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">All Enhance Plan Users Details</h2>
+        <div class="action-link">
+            <p>
+                @Html.ActionLink("Back", "AllViews", null, new { @class = "btn btn-secondary btn-custom" })
+            </p>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Age</th>
+                        <th>Job</th>
+                        <th>MonthlyPayment</th>
+                        <th>Working Years</th>
+                        <th>Created At</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (EnhancePlan M in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(model => M.Id)</td>
+                            <td>@Html.DisplayFor(model => M.FirstName)</td>
+                            <td>@Html.DisplayFor(model => M.LastName)</td>
+                            <td>@Html.DisplayFor(model => M.Email)</td>
+                            <td>@Html.DisplayFor(model => M.PhoneNumber)</td>
+                            <td>@Html.DisplayFor(model => M.Age)</td>
+                            <td>@Html.DisplayFor(model => M.Job)</td>
+                            <td>@Html.DisplayFor(model => M.MonthlyPayment)</td>
+                            <td>@Html.DisplayFor(model => M.Working_Year)</td>
+                            <td>@Html.DisplayFor(model => M.CreatedAt)</td>
+                            <td>@Html.DisplayFor(model => M.Status)</td>
+                            <td>
+                                @Html.ActionLink("View", "ViewEnhancePlan", new { @Id = M.Id }, new { @class = "btn btn-info btn-sm btn-custom" })
+                                @Html.ActionLink("Edit", "EditEnhancePlan", new { @Id = M.Id }, new { @class = "btn btn-warning btn-sm btn-custom" })
+                                @Html.ActionLink("Delete", "DeleteEnhancePlan", new { @Id = M.Id }, new { @class = "btn btn-danger btn-sm btn-custom" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+

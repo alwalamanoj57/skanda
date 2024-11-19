@@ -1,0 +1,181 @@
+﻿@using surya_banking_application_Altura_sphere.Models
+@{
+    ViewBag.Title = "Banking Home Page";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: url('https://img.freepik.com/premium-vector/banking-finance-concept-illustration_387612-169.jpg?semt=ais_hybrid') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            padding: 20px;
+        }
+
+        .content-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            max-width: 800px;
+            margin: auto;
+            transition: transform 0.3s;
+        }
+
+            .content-container:hover {
+                transform: scale(1.02);
+            }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #0056b3;
+            text-align: center;
+        }
+
+        .service-section {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .service-button {
+            background-color: #0056b3;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-bottom: 10px;
+        }
+
+            .service-button:hover {
+                background-color: #004494;
+                transform: translateY(-3px);
+            }
+
+        .form-control {
+            width: 94%;
+            padding: 12px 20px;
+            border: 2px solid #0056b3;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+            .form-control:focus {
+                border-color: #003f80;
+                box-shadow: 0 0 8px rgba(0, 63, 128, 0.5);
+                outline: none;
+            }
+
+        .service-image {
+            width: 80px; /* Image width */
+            margin: 0 auto 10px; /* Centering and margin */
+        }
+    </style>
+</head>
+<body>
+    <div class="content-container">
+        <h2 style="display: flex; align-items: center; justify-content: center;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPlbbhrv4Vyrif30urzYpTvYBHX_eZuyALyw&sg" alt="Surya Banking Logo" style="height: 80px; margin-right: 10px;" />
+            Surya Banking Services
+        </h2>
+        <div class="service-section">
+            <h3>Bank Accounts</h3>
+            <img src="https://cdn2.vectorstock.com/i/1000x1000/25/26/bank-account-icon-simple-element-from-banking-vector-34052526.jpg" alt="Bank Account Icon" class="service-image" />
+            <button class="service-button" onclick="location.href='@Url.Action("CreateAccount", "Account")'">Open New Account</button>
+
+            <div class="input-group mb-3">
+                <input type="text" id="closeAccountId" class="form-control" placeholder="Enter Account Id to Close" />
+                <div class="input-group-append">
+                    <button class="service-button" onclick="redirectToCloseAccount()">Close Account</button>
+                </div>
+            </div>
+
+            <div class="input-group mb-3">
+                <input type="text" id="accountNumber" class="form-control" placeholder="Enter Account Id" />
+                <div class="input-group-append">
+                    <button class="service-button" onclick="redirectToAccount()">View Account</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-section">
+            <h3>Loans</h3>
+            <img src="https://cdn-icons-png.flaticon.com/512/9903/9903593.png" alt="Loans Icon" class="service-image" />
+            <button class="service-button" onclick="location.href='@Url.Action("Index", "HomeLoan")'">Home Loan</button>
+            <button class="service-button" onclick="location.href='@Url.Action("EducationLoan", "Loans")'">Education Loan</button>
+            <button class="service-button" onclick="location.href='@Url.Action("PersonalLoan", "Loans")'">Personal Loan</button>
+            <button class="service-button" onclick="location.href='@Url.Action("Carloan", "Loans")'">Car Loan</button>
+            <button class="service-button" onclick="location.href='@Url.Action("BuissnessLoan", "Loans")'">Business Loan</button>
+        </div>
+
+        <div class="service-section">
+            <h3>Investments</h3>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8O8ixWnu1FYBQ_6gifCFy_LAveR9DL8ux-Q&s" alt="Investments Icon" class="service-image" />
+            <button class="service-button" onclick="location.href='@Url.Action("", "Home/ViewPlans")'">View Investment Options</button>
+            <button class="service-button" onclick="location.href='@Url.Action("", "Home/RetirnmentPlan")'">Post Retirement Investment</button>
+        </div>
+
+        <button class="service-button" onclick="location.href='@Url.Action("Index", "Home/Homepage")'">Back to Home</button>
+    </div>
+
+    <script>
+        function redirectToAccount() {
+            var accountNumber = document.getElementById("accountNumber").value;
+            if (accountNumber) {
+                $.ajax({
+                    url: '@Url.Action("CheckAccountExists", "Account")',
+                    type: 'GET',
+                    data: { id: accountNumber },
+                    success: function (exists) {
+                        if (exists) {
+                            window.location.href = '@Url.Action("ViewAcount", "Account")/' + accountNumber;
+                        } else {
+                            alert("Invalid ID. Please enter a valid Account ID.");
+                        }
+                    },
+                    error: function () {
+                        alert("An error occurred while checking the account.");
+                    }
+                });
+            } else {
+                alert("Please enter an account Id.");
+            }
+        }
+
+        function redirectToCloseAccount() {
+            var closeAccountId = document.getElementById("closeAccountId").value;
+            if (closeAccountId) {
+                $.ajax({
+                    url: '@Url.Action("CheckAccountExists", "Account")',
+                    type: 'GET',
+                    data: { id: closeAccountId },
+                    success: function (exists) {
+                        if (exists) {
+                            window.location.href = '@Url.Action("DeleteAccount", "Account")/' + closeAccountId;
+                        } else {
+                            alert("Invalid ID. Please enter a valid Account ID.");
+                        }
+                    },
+                    error: function () {
+                        alert("An error occurred while checking the account.");
+                    }
+                });
+            } else {
+                alert("Please enter an account Id.");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+﻿@using surya_banking_application_Altura_sphere.Models
+@{
+    ViewBag.Title = "AllViews";
+}
+<h2 style="display: flex; align-items: center; justify-content: center;">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPlbbhrv4Vyrif30urzYpTvYBHX_eZuyALyw&sg" alt="Surya Banking Logo" style="height: 80px; margin-right: 10px;" />
+    Surya Banking Services
+</h2>
+<h2 align="center">All Information About Bank Details</h2>
+
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(to right, #e9ecef, #ffffff), url('your-background-image-url.jpg'); /* Add your image URL here */
+        background-size: cover; /* Ensure the image covers the entire background */
+        background-position: center; /* Center the image */
+        margin: 0;
+        padding: 20px;
+    }
+
+    h2 {
+        color: #333;
+        margin-bottom: 30px;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .container {
+        max-width: 800px;
+        margin: auto;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        animation: fadeIn 0.5s ease-in-out;
+        transition: transform 0.3s;
+    }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+    h3 {
+        text-align: center;
+        color: #007BFF;
+        margin: 20px 0;
+        padding: 10px;
+        transition: color 0.3s, transform 0.3s;
+        font-size: 1.5em;
+    }
+
+        h3:hover {
+            color: #0056b3;
+            transform: scale(1.05);
+        }
+
+    p {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    a {
+        display: inline-block;
+        padding: 12px 20px;
+        margin: 10px 0;
+        color: white;
+        background-color: #28a745;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s, transform 0.3s;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        font-size: 1.1em;
+    }
+
+        a:hover {
+            background-color: #218838;
+            transform: translateY(-3px);
+        }
+
+    .section {
+        margin: 20px 0;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        padding: 15px;
+        background: rgba(248, 249, 250, 0.8);
+        background-image: url('https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcm0zMDktYWV3LTAxM18xXzEuanBn.jpg'); /* Replace with your image URL */
+        background-size: cover;
+        background-position: center;
+        transition: background 0.3s;
+    }
+
+
+        .section:hover {
+            margin: 20px 0;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            background: rgba(248, 249, 250, 0.8);
+            background-image: url('https://i.pinimg.com/736x/20/de/89/20de8953a3d8ba249123c47903d19f3c.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            transition: background 0.3s;
+        }
+
+    keyframes fadeIn {
+        from
+
+    {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+    }
+</style>
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <p>
+            @Html.ActionLink("Back to Admin Login Page", "Login", "AdminLogin", null, new { @class = "btn btn-secondary" })
+        </p>
+        <div class="section">
+            <h3>Users Registration Details</h3>
+            <p>@Html.ActionLink("Users Details", "AllUser", null, new { @class = "link-button" })</p>
+        </div>
+        <div class="section">
+            <h3>Accounts</h3>
+            <p>@Html.ActionLink("Accounts Details", "AccountDetails", null, new { @class = "link-button" })</p>
+            <p>@Html.ActionLink("Delete Accounts Details", "AllDeleteAccountDetails", null, new { @class = "link-button" })</p>
+        </div>
+        <div class="section">
+            <h3>Loans</h3>
+            <p>@Html.ActionLink("Home Loan Details", "DisplayHomeLoan", null, new { @class = "link-button" })</p>
+            <p>@Html.ActionLink("Education Loan Details", "DisplayEducationLoan", null, new { @class = "link-button" })</p>
+            <p>@Html.ActionLink("Personal Loan Details", "DisplayPersonalLoan", null, new { @class = "link-button" })</p>
+            <p>@Html.ActionLink("Car Loan Details", "DisplayCarLoan", null, new { @class = "link-button" })</p>
+            <p>@Html.ActionLink("Business Loan Details", "DisplayBussiness", null, new { @class = "link-button" })</p>
+        </div>
+        <div class="section">
+            <h3>Investment</h3>
+            <p>@Html.ActionLink("Mutual Fund Details", "AllDetailsMutual", null, new { @class = "link-button" })</p>
+            <p>@Html.ActionLink("Stock Investment Details", "AllDetailsStock", null, new { @class = "link-button" })</p>
+            <p>@Html.ActionLink("Bond Investment Details", "AllDetailsBond", null, new { @class = "link-button" })</p>
+        </div>
+        <div class="section">
+            <h3>Post Retirement Investment</h3>
+            <p>@Html.ActionLink("Basic Plan Investment Details", "AllDetailsBasicPlan", null, new { @class = "link-button" })</p>
+            <p>@Html.ActionLink("Enhance Plan Investment Details", "AllDetailsEnhancePlan", null, new { @class = "link-button" })</p>
+            <p>@Html.ActionLink("Premium Plan Investment Details", "AllDetailsPremiumPlan", null, new { @class = "link-button" })</p>
+        </div>
+    }
+</div>

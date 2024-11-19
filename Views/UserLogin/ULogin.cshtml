@@ -1,0 +1,138 @@
+﻿@model surya_banking_application_Altura_sphere.Models.UserReg
+@{
+    ViewBag.Title = "User Login";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: url('https://t4.ftcdn.net/jpg/01/19/11/55/360_F_119115529_mEnw3lGpLdlDkfLgRcVSbFRuVl6sMDty.jpg') no-repeat center center fixed; /* Add your background image */
+            background-size: cover; /* Cover the entire background */
+            color: #ffffff; /* Light text for contrast */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white card */
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            backdrop-filter: blur(10px); /* Blur effect for background */
+        }
+
+        h2 {
+            margin-bottom: 25px;
+            color: #333; /* Dark title for contrast */
+            font-weight: 700;
+        }
+        
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+            color: #333; /* Darker label color */
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            transition: border-color 0.3s;
+        }
+
+            input[type="text"]:focus,
+            input[type="password"]:focus {
+                border-color: #6a11cb; /* Focus border color */
+                outline: none;
+            }
+
+        input[type="submit"] {
+            background-color: #6a11cb; /* Main button color */
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            transition: background-color 0.3s;
+            margin-top: 15px;
+        }
+
+            input[type="submit"]:hover {
+                background-color: #2575fc; /* Hover color */
+            }
+
+        .back-button {
+            background-color: #e74c3c; /* Red */
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+
+            .back-button:hover {
+                background-color: #c0392b; /* Darker red on hover */
+            }
+
+        .message {
+            margin-top: 15px;
+            color: #e74c3c; /* Error message color */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2 style="display: flex; align-items: center;" >
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPlbbhrv4Vyrif30urzYpTvYBHX_eZuyALyw&sg" alt="Surya Banking Logo" style="height: 80px; margin-right: 10px;" />
+            Surya Banking Services
+        </h2>
+
+        <h2>User Login</h2>
+        <div class="message">@ViewBag.Message</div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <label for="Username">Enter Username:</label>
+                @Html.TextBoxFor(model => model.Username, new { @class = "form-control", placeholder = "Username", required = "required", id = "Username" })
+                @Html.ValidationMessageFor(model => model.Username)
+            </div>
+            <div class="form-group">
+                <label for="Passwords">Enter Password:</label>
+                @Html.PasswordFor(model => model.Passwords, new { @class = "form-control", placeholder = "Password", required = "required", id = "Passwords" })
+                @Html.ValidationMessageFor(model => model.Passwords)
+            </div>
+            <input type="submit" name="B1" value="Login" />
+        }
+        <button class="back-button" onclick="location.href='@Url.Action("Index", "Home/HomePage")'">Back to Main Page</button>
+    </div>
+</body>
+</html>

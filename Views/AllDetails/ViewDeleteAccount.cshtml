@@ -1,0 +1,180 @@
+﻿@model surya_banking_application_Altura_sphere.Models.DeletedAccounts
+@{
+    ViewBag.Title = "View Delete Account Details";
+}
+<h2 Align="center">Delete Account Details Page</h2>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+
+    .form-container {
+        max-width: 600px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #007BFF;
+        color: white;
+    }
+
+    input[type="text"], input[type="date"], input[type="tel"], input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        transition: border-color 0.3s;
+    }
+
+        input[type="text"]:focus, input[type="date"]:focus, input[type="tel"]:focus, input[type="email"]:focus {
+            border-color: #007BFF;
+        }
+
+    input[type="submit"] {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+    keyframes fadeIn {
+        from
+
+    {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+    }
+
+    .validation-message {
+        color: red;
+        font-size: 0.9em;
+    }
+</style>
+
+<div class="form-container">
+    @using (Html.BeginForm())
+    {
+        <p>@Html.ActionLink("Back Delete Accounts Details page", "AllDeleteAccountDetails")</p>
+        <table>
+            <tr>
+                <th>Delete Account ID</th>
+                <td>
+                    @Html.DisplayFor(model => model.DeletedAccountId, new { @required = "required", @placeholder = "Delete Account ID", @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <th>Account ID</th>
+                <td>
+                    @Html.DisplayFor(model => model.AccountId, new { @required = "required", @placeholder = "Account ID", @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <th>Account Number</th>
+                <td>
+                    @Html.DisplayFor(model => model.AccountNumber, new { @required = "required", @placeholder = "Account Number", @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>
+                    @Html.DisplayFor(model => model.Email, new { @required = "required", @placeholder = "Email", @type = "email", @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <th>First Name</th>
+                <td>
+                    @Html.DisplayFor(model => model.FirstName, new { @required = "required", @placeholder = "First Name", @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td>
+                    @Html.DisplayFor(model => model.LastName, new { @required = "required", @placeholder = "Last Name", @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <th>Phone Number</th>
+                <td>
+                    @Html.DisplayFor(model => model.PhoneNumber, new { @required = "required", @placeholder = "Phone Number", @type = "tel", @pattern = @"\d{10}", @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>
+                    @Html.DisplayFor(model => model.Addres, new { @required = "required", @placeholder = "Address", @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>
+                    @Html.DisplayFor(model => model.City, new { @required = "required", @placeholder = "City", @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <th>State</th>
+                <td>
+                    @Html.DisplayFor(model => model.States, new { @required = "required", @placeholder = "State", @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>
+                    @Html.DisplayFor(model => model.Country, new { @required = "required", @placeholder = "Country", @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <th>Account Deleted Date</th>
+                <td>
+                    @Html.DisplayFor(model => model.DeletedAt)
+                </td>
+            </tr>
+        </table>
+    }
+</div>
+
+<script>
+    document.querySelector("form").addEventListener("submit", function (event) {
+        const phoneInput = document.querySelector("input[type='tel']");
+        const phonePattern = /^\d{10}$/;
+
+        if (!phonePattern.test(phoneInput.value)) {
+            event.preventDefault();
+            alert("Please enter a valid phone number (10 digits).");
+        }
+    });
+</script>

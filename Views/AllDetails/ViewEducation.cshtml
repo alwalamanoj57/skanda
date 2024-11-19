@@ -1,0 +1,119 @@
+﻿@model surya_banking_application_Altura_sphere.Models.EducationLoan
+@{
+    ViewBag.Title = "View Education Loan";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #343a40;
+            font-weight: bold;
+        }
+
+        .form-container {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .table th, .table td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        .action-link {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .btn-back {
+            background-color: #6c757d;
+            color: white;
+        }
+
+            .btn-back:hover {
+                background-color: #5a6268;
+            }
+    </style>
+</head>
+<body>
+    <div class="container form-container">
+        <h2 class="text-center">View Education Loan</h2>
+        <div class="action-link">
+            @Html.ActionLink("Back", "DisplayEducationLoan", null, new { @class = "btn btn-back" })
+        </div>
+        @using (Html.BeginForm())
+        {
+            <table class="table table-bordered">
+                <tr>
+                    <th>Loan Id</th>
+                    <td>@Html.DisplayFor(model => model.LoanID)</td>
+                </tr>
+                <tr>
+                    <th>Borrower Name</th>
+                    <td>@Html.DisplayFor(model => model.BorrowerName)</td>
+                </tr>
+                <tr>
+                    <th>Loan Amount</th>
+                    <td>@Html.DisplayFor(model => model.LoanAmount)</td>
+                </tr>
+                <tr>
+                    <th>Interest Rate</th>
+                    <td>@Html.DisplayFor(model => model.InterestRate)</td>
+                </tr>
+                <tr>
+                    <th>Loan Term</th>
+                    <td>@Html.DisplayFor(model => model.LoanTerm)</td>
+                </tr>
+                <tr>
+                    <th>Monthly Payment</th>
+                    <td>@Html.DisplayFor(model => model.MonthlyPayment)</td>
+                </tr>
+                <tr>
+                    <th>Start Date</th>
+                    <td>@Html.DisplayFor(model => model.StartDate)</td>
+                </tr>
+                <tr>
+                    <th>Institution Name</th>
+                    <td>@Html.DisplayFor(model => model.InstitutionName)</td>
+                </tr>
+                <tr>
+                    <th>Degree Program</th>
+                    <td>@Html.DisplayFor(model => model.DegreeProgram)</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>@Html.DisplayFor(model => model.Email)</td>
+                </tr>
+                <tr>
+                    <th>Phone Number</th>
+                    <td>@Html.DisplayFor(model => model.Phone)</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>@Html.DisplayFor(model => model.Status)</td>
+                </tr>
+            </table>
+        }
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

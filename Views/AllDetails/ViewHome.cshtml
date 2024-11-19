@@ -1,0 +1,117 @@
+﻿@model surya_banking_application_Altura_sphere.Models.HomeLoan
+@{
+    ViewBag.Title = "View Home";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #343a40;
+            font-weight: bold;
+        }
+
+        .table {
+            margin: 20px auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+            .table th {
+                background-color: #007bff;
+                color: white;
+                transition: background-color 0.3s;
+            }
+
+                .table th:hover {
+                    background-color: #0056b3;
+                }
+
+            .table td {
+                background-color: white;
+                transition: background-color 0.3s;
+            }
+
+                .table td:hover {
+                    background-color: #f1f1f1;
+                }
+
+        .action-link {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+            .action-link a {
+                color: #007bff;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+
+                .action-link a:hover {
+                    color: #0056b3;
+                    text-decoration: underline;
+                }
+
+        .table th, .table td {
+            padding: 15px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">Home Loan View Page</h2>
+        <div class="action-link">
+            @Html.ActionLink("Back", "DisplayHomeLoan", null, new { @class = "btn btn-secondary" })
+        </div>
+        @using (Html.BeginForm())
+        {
+            <table class="table table-bordered">
+                <tr>
+                    <th>Application Id</th>
+                    <td>@Html.DisplayFor(model => model.Application_id)</td>
+                </tr>
+                <tr>
+                    <th>Full Name</th>
+                    <td>@Html.DisplayFor(model => model.Full_Name)</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>@Html.DisplayFor(model => model.Email)</td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td>@Html.DisplayFor(model => model.Phone_number)</td>
+                </tr>
+                <tr>
+                    <th>Loan Amount</th>
+                    <td>@Html.DisplayFor(model => model.laon_amount)</td>
+                </tr>
+                <tr>
+                    <th>Loan Term (Year)</th>
+                    <td>@Html.DisplayFor(model => model.loan_term)</td>
+                </tr>
+                <tr>
+                    <th>Additional Information</th>
+                    <td>@Html.DisplayFor(model => model.additional_info)</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>@Html.DisplayFor(model => model.Status)</td>
+                </tr>
+            </table>
+        }
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+﻿@model surya_banking_application_Altura_sphere.Models.CarLoan
+@{
+    ViewBag.Title = "Car Loan Application";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: url('https://files.cholamandalam.com/mobile_view_20_14_8e1df86d47.webp') no-repeat center center fixed;
+            background-size: cover; /* Make the image cover the entire background */
+            color: #333;
+            padding: 20px;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: #0056b3;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th {
+            text-align: left;
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        input[type="text"], input[type="number"], input[type="decimal"], input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+            input[type="submit"]:hover {
+                background-color: #0056b3;
+            }
+
+        .validation-message {
+            color: red;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .message {
+            color: green;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2 style="display: flex; align-items: center; justify-content: center;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPlbbhrv4Vyrif30urzYpTvYBHX_eZuyALyw&sg" alt="Surya Banking Logo" style="height: 80px; margin-right: 10px;" />
+            Surya Banking Services
+        </h2>
+        <h2>Car Loan Form</h2>
+        <div class="message">@ViewBag.Message</div>
+        <div style="padding: 20px; border: 1px solid #007bff; border-radius: 10px; background-color: #f9f9f9; margin-top: 20px;">
+            <h4>Your Loan Details:</h4>
+            <p><strong>ID:</strong> <span style="color: #007bff;">@ViewBag.me</span></p>
+        </div>
+        @using (Html.BeginForm())
+        {
+            <p class="text-center">@Html.ActionLink("Back to Home Page", "ContentPage", "Home", null, new { @class = "btn btn-secondary" })</p>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Borrower Name</th>
+                        <td>
+                            @Html.TextBoxFor(model => model.BorrowerName, new { @class = "form-control", @required = "required", @placeholder = "Enter Borrower Name" })
+                            @Html.ValidationMessageFor(model => model.BorrowerName, "", new { @class = "validation-message" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Loan Amount</th>
+                        <td>
+                            @Html.TextBoxFor(model => model.LoanAmount, new { @class = "form-control", @required = "required", @placeholder = "Enter Loan Amount" })
+                            @Html.ValidationMessageFor(model => model.LoanAmount, "", new { @class = "validation-message" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Interest Rate (%)</th>
+                        <td>
+                            @Html.TextBoxFor(model => model.InterestRate, new { @class = "form-control", @required = "required", @placeholder = "Enter Interest Rate" })
+                            @Html.ValidationMessageFor(model => model.InterestRate, "", new { @class = "validation-message" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Loan Term (Months)</th>
+                        <td>
+                            @Html.TextBoxFor(model => model.LoanTerm, new { @class = "form-control", @required = "required", @placeholder = "Enter Loan Term" })
+                            @Html.ValidationMessageFor(model => model.LoanTerm, "", new { @class = "validation-message" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Monthly Payment</th>
+                        <td>
+                            @Html.TextBoxFor(model => model.MonthlyPayment, new { @class = "form-control", @required = "required", @placeholder = "Enter Monthly Payment" })
+                            @Html.ValidationMessageFor(model => model.MonthlyPayment, "", new { @class = "validation-message" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Start Date</th>
+                        <td>
+                            @Html.TextBoxFor(model => model.StartDate, new { @class = "form-control", @required = "required", @placeholder = "YYYY-MM-DD", type = "date" })
+                            @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "validation-message" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Vehicle Make</th>
+                        <td>
+                            @Html.TextBoxFor(model => model.VehicleMake, new { @class = "form-control", @required = "required", @placeholder = "Enter Vehicle Make" })
+                            @Html.ValidationMessageFor(model => model.VehicleMake, "", new { @class = "validation-message" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Vehicle Model</th>
+                        <td>
+                            @Html.TextBoxFor(model => model.VehicleModel, new { @class = "form-control", @required = "required", @placeholder = "Enter Vehicle Model" })
+                            @Html.ValidationMessageFor(model => model.VehicleModel, "", new { @class = "validation-message" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Vehicle Year</th>
+                        <td>
+                            @Html.TextBoxFor(model => model.VehicleYear, new { @class = "form-control", @required = "required", @placeholder = "Enter Vehicle Year" })
+                            @Html.ValidationMessageFor(model => model.VehicleYear, "", new { @class = "validation-message" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @required = "required", @placeholder = "Enter Email" })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "validation-message" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Phone</th>
+                        <td>
+                            @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", @required = "required", @placeholder = "Enter Phone Number" })
+                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "validation-message" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.HiddenFor(model => model.Status, new { Value = "Application Submitted" })
+                        </th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="Apply" name=" B1" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        }
+        <div class="container">
+            <h2 class="text-center">Check Your Car Loan Status</h2>
+
+            @if (TempData["Message"] != null)
+            {
+                <div class="alert alert-danger text-center">
+                    @TempData["Message"]
+                </div>
+            }
+
+            @using (Html.BeginForm("CheckApplicationId", "Loans", FormMethod.Post))
+            {
+                <div class="form-group">
+                    <label for="LoanID">Enter Loan ID:</label>
+                    <input type="number" class="form-control" id="LoanID" name="LoanID" required />
+                </div>
+                <button type="submit" class="btn btn-attractive">Check Status</button>
+            }
+        </div>
+
+        <style>
+            .btn-attractive {
+                background-color: #28a745; /* Green background */
+                color: white; /* White text */
+                padding: 10px 20px; /* Padding for size */
+                border-radius: 5px; /* Rounded corners */
+                border: none; /* Remove default border */
+                font-size: 16px; /* Font size */
+                font-weight: bold; /* Bold text */
+                transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+                cursor: pointer; /* Change cursor on hover */
+            }
+
+                .btn-attractive:hover {
+                    background-color: #218838; /* Darker green on hover */
+                    transform: scale(1.05); /* Slightly enlarge on hover */
+                }
+
+                .btn-attractive:focus {
+                    outline: none; /* Remove focus outline */
+                    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5); /* Add a glow effect */
+                }
+        </style>
+
+
+
+    </div>
+</body>
+</html>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validate/0.3.1/bootstrap-validate.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            bootstrapValidate('#BorrowerName', 'required:Please enter your name');
+            bootstrapValidate('#LoanAmount', 'required:Please enter the loan amount');
+            bootstrapValidate('#InterestRate', 'required:Please enter the interest rate');
+            bootstrapValidate('#LoanTerm', 'required:Please enter the loan term');
+            bootstrapValidate('#MonthlyPayment', 'required:Please enter the monthly payment');
+            bootstrapValidate('#StartDate', 'required:Please enter the start date');
+            bootstrapValidate('#VehicleMake', 'required:Please enter the vehicle make');
+            bootstrapValidate('#VehicleModel', 'required:Please enter the vehicle model');
+            bootstrapValidate('#VehicleYear', 'required:Please enter the vehicle year');
+        });
+    </script>
+}

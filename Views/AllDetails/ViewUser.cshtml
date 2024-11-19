@@ -1,0 +1,78 @@
+﻿@model surya_banking_application_Altura_sphere.Models.UserReg
+@{
+    ViewBag.Title = "ViewUser";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #343a40;
+        }
+
+        .user-details-table {
+            margin: 20px auto;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-back {
+            margin: 20px auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">View User Details</h2>
+        <div class="text-center">
+            @Html.ActionLink("Back", "AllUser", null, new { @class = "btn btn-secondary btn-back" })
+        </div>
+        <table class="table user-details-table table-bordered">
+            <tbody>
+                <tr>
+                    <th>UserName</th>
+                    <td>@Html.DisplayFor(model => model.Username)</td>
+                </tr>
+                <tr>
+                    <th>Password</th>
+                    <td>@Html.DisplayFor(model => model.Passwords)</td>
+                </tr>
+                <tr>
+                    <th>Mobile Number</th>
+                    <td>@Html.DisplayFor(model => model.Mobile)</td>
+                </tr>
+                <tr>
+                    <th>Email Address</th>
+                    <td>@Html.DisplayFor(model => model.Email)</td>
+                </tr>
+                <tr>
+                    <th>Date of Birth</th>
+                    <td>@Html.DisplayFor(model => model.DOB)</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>@Html.DisplayFor(model => model.Address)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    @*<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>*@
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

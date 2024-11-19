@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "VerifyOtp3";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 50px auto;
+        }
+
+        h2 {
+            color: #343a40;
+        }
+
+        .alert {
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+
+        .timer {
+            font-size: 1.2em;
+            color: #dc3545; /* Bootstrap danger color */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2 class="text-center">Enter OTP</h2>
+            @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+            {
+                <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+            }
+            <div class="timer" id="otpTimer">5:00</div>
+            @using (Html.BeginForm())
+            {
+                <div class="form-group">
+                    <p class="text-center">@Html.ActionLink("Back", "AllDetailsStock", null, new { @class = "btn btn-secondary" })</p>
+                    <label for="enteredOtp">OTP:</label>
+                    <input type="text" id="enteredOtp" name="enteredOtp" class="form-control" required />
+                </div>
+                <input type="hidden" name="username" value="@ViewBag.Username" />
+                <div class="text-center">
+                    <input type="submit" class="btn btn-primary" value="Verify OTP" />
+                </div>
+            }
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Countdown Timer for 5 minutes
+        var timeLeft = 300; // 5 minutes in seconds
+        var timerElement = document.getElementById('otpTimer');
+
+        function updateTimer() {
+            var minutes = Math.floor(timeLeft / 60);
+            var seconds = timeLeft % 60;
+
+            // Format time with leading zeros
+            timerElement.innerHTML = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+
+            if (timeLeft > 0) {
+                timeLeft--;
+            } else {
+                clearInterval(timerInterval);
+                alert("OTP has expired. Please request a new one.");
+                // Optionally, redirect to request a new OTP
+                // window.location.href = '@Url.Action("RequestOtp", "YourController")';
+            }
+        }
+
+        var timerInterval = setInterval(updateTimer, 1000);
+    </script>
+</body>
+</html>
+
+

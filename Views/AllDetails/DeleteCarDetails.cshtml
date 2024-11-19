@@ -1,0 +1,166 @@
+﻿@model surya_banking_application_Altura_sphere.Models.CarLoan
+@{
+    ViewBag.Title = "Delete Car Loan";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #343a40;
+            font-weight: bold;
+        }
+
+        .form-container {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .table th, .table td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        .action-link {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .btn-submit {
+            background-color: #dc3545;
+            color: white;
+            font-weight: bold;
+        }
+
+            .btn-submit:hover {
+                background-color: #c82333;
+            }
+
+        .text-danger {
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container form-container">
+        <h2 class="text-center">Delete Car Loan Details</h2>
+        <div class="action-link">
+            @Html.ActionLink("Back", "DisplayCarLoan", null, new { @class = "btn btn-secondary" })
+        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <table class="table table-bordered">
+        <tr>
+            <th>Loan Id</th>
+            <td>
+                @Html.TextBoxFor(model => model.LoanID, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <th>Borrower Name</th>
+            <td>
+                @Html.TextBoxFor(model => model.BorrowerName, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <th>Loan Amount</th>
+            <td>
+                @Html.TextBoxFor(model => model.LoanAmount, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <th>Interest Rate</th>
+            <td>
+                @Html.TextBoxFor(model => model.InterestRate, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <th>Loan Term</th>
+            <td>
+                @Html.TextBoxFor(model => model.LoanTerm, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <th>Monthly Payment</th>
+            <td>
+                @Html.TextBoxFor(model => model.MonthlyPayment, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <th>Start Date</th>
+            <td>
+                @Html.TextBoxFor(model => model.StartDate, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <th>Vehicle Make</th>
+            <td>
+                @Html.TextBoxFor(model => model.VehicleMake, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <th>Vehicle Model</th>
+            <td>
+                @Html.TextBoxFor(model => model.VehicleModel, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <th>Vehicle Year</th>
+            <td>
+                @Html.TextBoxFor(model => model.VehicleYear, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @required = "required", @placeholder = "Enter Email" })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "validation-message" })
+            </td>
+        </tr>
+        <tr>
+            <th>Phone</th>
+            <td>
+                @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", @required = "required", @placeholder = "Enter Phone Number" })
+                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "validation-message" })
+            </td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td>
+                @Html.TextBoxFor(model => model.Status, new { @class = "form-control", @readonly = "readonly" })
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @ViewBag.Message
+            </th>
+            <td>
+                <input type="submit" name="B1" value="Delete" class="btn btn-submit" />
+            </td>
+        </tr>
+    </table>
+        }
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

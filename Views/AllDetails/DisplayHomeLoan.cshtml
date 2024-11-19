@@ -1,0 +1,114 @@
+﻿@using surya_banking_application_Altura_sphere.Models
+@{
+    ViewBag.Title = "Home Loan Details";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #343a40;
+            font-weight: bold;
+        }
+
+        .table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            align-items: center; /* Center align items */
+            margin-bottom: 20px;
+        }
+
+        .table-responsive {
+            margin-top: 20px;
+        }
+
+        .action-links a {
+            margin: 0 5px;
+        }
+
+        .btn-back {
+            background-color: #28a745; /* Green background */
+            color: white; /* White text */
+            padding: 10px 20px; /* Padding for size */
+            border-radius: 5px; /* Rounded corners */
+            text-decoration: none; /* No underline */
+            transition: background-color 0.3s; /* Smooth transition */
+            margin-top: 10px; /* Space between title and button */
+        }
+
+            .btn-back:hover {
+                background-color: #218838; /* Darker green on hover */
+            }
+
+        .btn {
+            min-width: 75px; /* Ensure buttons are of uniform width */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="action-buttons">
+            <h2 class="text-center">Home Loan Details</h2>
+            <div>
+                @Html.ActionLink("Back", "AllViews", null, new { @class = "btn-back" })
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            @using (Html.BeginForm())
+            {
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Application Id</th>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Loan Amount</th>
+                            <th>Loan Term (Years)</th>
+                            <th>Additional Information</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (HomeLoan H in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(model => H.Application_id)</td>
+                                <td>@Html.DisplayFor(model => H.Full_Name)</td>
+                                <td>@Html.DisplayFor(model => H.Email)</td>
+                                <td>@Html.DisplayFor(model => H.Phone_number)</td>
+                                <td>@Html.DisplayFor(model => H.laon_amount)</td>
+                                <td>@Html.DisplayFor(model => H.loan_term)</td>
+                                <td>@Html.DisplayFor(model => H.additional_info)</td>
+                                <td>@Html.DisplayFor(model => H.Status)</td>
+                                <td class="action-links text-center">
+                                    @Html.ActionLink("View", "ViewHome", new { Id = H.Application_id }, new { @class = "btn btn-info btn-sm" })
+                                    @Html.ActionLink("Edit", "EditHome", new { Id = H.Application_id }, new { @class = "btn btn-warning btn-sm" })
+                                    @Html.ActionLink("Delete", "DeleteHome", new { Id = H.Application_id }, new { @class = "btn btn-danger btn-sm" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
